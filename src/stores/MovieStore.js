@@ -20,15 +20,12 @@ class MovieStore {
             setCurrentFilm: action,
             makeSearch: action,
             getFilm: action,
+            getSearchText: action,
         });
     };
 
     setSearchText = searchText => {
         this.searchText = searchText;
-
-        if (this.searchText.length > 2) {
-            this.makeSearch(this.searchText);
-        }
 
         if (!this.searchText) {
             this.results = [];
@@ -79,6 +76,9 @@ class MovieStore {
 
     setCurrentFilm = film => {
         this.currentFilm = film;
+    }
+    getSearchText = () => {
+        return this.searchText;
     }
 }
 
