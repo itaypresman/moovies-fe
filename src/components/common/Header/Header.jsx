@@ -12,7 +12,6 @@ function Header() {
         navigate('/');
         MovieStore.setSearchText('');
         MovieStore.setResults([]);
-        MovieStore.setCurrentFilmId(null);
         MovieStore.setCurrentFilm(null);
     };
 

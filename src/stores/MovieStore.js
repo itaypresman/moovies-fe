@@ -6,8 +6,6 @@ class MovieStore {
     searchText = '';
     results = [];
     currentFilm = null;
-    currentFilmId = null;
-
     error = null;
 
     constructor() {
@@ -20,7 +18,6 @@ class MovieStore {
             setSearchText: action,
             setResults: action,
             setCurrentFilm: action,
-            setCurrentFilmId: action,
             makeSearch: action,
             getFilm: action,
         });
@@ -63,7 +60,7 @@ class MovieStore {
 
     getFilm = filmId => {
         const params = {
-            id: this.currentFilmId,
+            id: filmId,
         };
 
         Platform.get('/filmInfo', { params }).then(response => {
@@ -73,21 +70,15 @@ class MovieStore {
             } else if ((response.status === 200) && ('error' in response.data)) {
                 this.error = response.data.error;
                 this.currentFilm = null;
-                this.currentFilmId = null;
             } else {
                 this.error = 'api_error';
                 this.currentFilm = null;
-                this.currentFilmId = null;
             }
         });
     };
 
     setCurrentFilm = film => {
         this.currentFilm = film;
-    }
-
-    setCurrentFilmId = filmId => {
-        this.currentFilmId = filmId;
     }
 }
 

@@ -4,9 +4,14 @@ import FilmInfo from './pages/FilmInfo/FilmInfo.jsx';
 import Header from './common/Header/Header.jsx';
 import './Application.css';
 import { Route, Routes } from 'react-router-dom';
+import { useParams } from 'react-router';
+
 
 
 function Application() {
+    const { filmId } = useParams();
+
+    console.log('Film ID:', filmId);
     return (
         <React.Fragment>
             <Header/>

@@ -10,7 +10,6 @@ function SearchItem({ title, id }) {
 
     const onFilmClick = () => {
         MovieStore.setSearchText('');
-        MovieStore.setCurrentFilmId(id);
         navigate(id);
     }
 

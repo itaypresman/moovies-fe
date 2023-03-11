@@ -2,12 +2,15 @@ import React, { useEffect } from 'react';
 import MovieStore from '@stores/MovieStore.js';
 import { observer } from 'mobx-react';
 import './FilmInfo.css';
+import { useParams } from 'react-router';
 
 
 function FilmInfo() {
+    const { filmId } = useParams();
+
     useEffect(() => {
-        MovieStore.getFilm();
-    }, [MovieStore.currentFilmId]);
+        MovieStore.getFilm(filmId);
+    }, [filmId]);
 
     if (!MovieStore.currentFilm) {
         return null;
