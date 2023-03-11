@@ -6,14 +6,15 @@ import SearchItem from '@components/common/SearchBox/SearchItem.jsx';
 
 
 function SearchBox() {
-    const onTextChange = async e => {
-        await MovieStore.setSearchText(e.target.value);
+    const onTextChange = e => {
+        MovieStore.setSearchText(e.target.value);
     };
 
-    const SearchResults = MovieStore.results.map(item =>  <SearchItem title={item.Title} id={item.imdbID} key={item.imdbID}/>);
+    const SearchResults = MovieStore.results.map(item => <SearchItem title={ item.Title } id={ item.imdbID }
+                                                                     key={ item.imdbID }/>);
     return (
         <div id='search-container'>
-            <input onKeyDown={onTextChange} type='text' id='search-input' placeholder='Search'/>
+            <input onKeyPress={ onTextChange } type='text' id='search-input' placeholder='Search'/>
             <div id='search-results'>
                 { MovieStore.results.length ? SearchResults : null }
             </div>

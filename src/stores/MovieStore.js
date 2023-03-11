@@ -1,12 +1,13 @@
 import { action, observable, makeObservable } from 'mobx';
-import axios from 'axios';
 import Platform from '@lib/platform.js';
 
 
 class MovieStore {
     searchText = '';
     results = [];
-    currentFilm = {};
+    currentFilm = null;
+    currentFilmId = null;
+
     error = null;
 
     constructor() {
@@ -17,16 +18,18 @@ class MovieStore {
             error: observable,
 
             setSearchText: action,
-            setCurrentFilm: action,
+            setResults: action,
+            setCurrentFilmId: action,
             makeSearch: action,
+            getFilm: action,
         });
     };
 
-    setSearchText = async searchText => {
+    setSearchText = searchText => {
         this.searchText = searchText;
 
         if (this.searchText.length > 2) {
-            await this.makeSearch(this.searchText);
+            this.makeSearch(this.searchText);
         }
 
         if (!this.searchText) {
@@ -34,15 +37,11 @@ class MovieStore {
         }
     };
 
-    getSearchText = () => {
-        return this.searchText;
+    setResults = results => {
+        this.results = results;
     };
 
-    setCurrentFilm = currentFilm => {
-        this.currentFilm = currentFilm;
-    };
-
-    makeSearch = async searchText => {
+    makeSearch = searchText => {
         const params = {
             title: searchText,
         };
@@ -60,6 +59,31 @@ class MovieStore {
             }
         });
     };
+
+    getFilm = filmId => {
+        const params = {
+            id: this.currentFilmId,
+        };
+
+        Platform.get('/filmInfo', { params }).then(response => {
+            if ((response.status === 200) && !('error' in response.data)) {
+                this.currentFilm = response.data;
+                this.error = null;
+            } else if ((response.status === 200) && ('error' in response.data)) {
+                this.error = response.data.error;
+                this.currentFilm = null;
+                this.currentFilmId = null;
+            } else {
+                this.error = 'api_error';
+                this.currentFilm = null;
+                this.currentFilmId = null;
+            }
+        });
+    };
+
+    setCurrentFilmId = filmId => {
+        this.currentFilmId = filmId;
+    }
 }
 
 

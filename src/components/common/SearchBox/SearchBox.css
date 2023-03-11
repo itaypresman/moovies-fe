@@ -3,7 +3,7 @@
     align-items: center;
     position: relative;
     width: 30%;
-    margin-left: auto; /* Добавлен margin-left:auto для перемещения поисковой строки вправо */
+    margin-left: auto;
 }
 
 input[type="text"] {
@@ -19,7 +19,6 @@ input[type="text"] {
 }
 
 #search-results {
-    /*display: none;*/
     position: absolute;
     top: 50px;
     left: 0;
