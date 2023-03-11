@@ -9,9 +9,6 @@ import { useParams } from 'react-router';
 
 
 function Application() {
-    const { filmId } = useParams();
-
-    console.log('Film ID:', filmId);
     return (
         <React.Fragment>
             <Header/>

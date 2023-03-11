@@ -1,5 +1,5 @@
+require('dotenv').config();
 const path = require('path');
-
 
 module.exports = {
     devtool: 'eval',
@@ -8,6 +8,7 @@ module.exports = {
             directory: path.join(__dirname, 'dist'),
         },
         compress: true,
-        port: 8080,
-    }
+        port: process.env.PORT,
+        historyApiFallback: true
+    },
 };
