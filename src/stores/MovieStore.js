@@ -1,5 +1,6 @@
 import { action, observable, makeObservable } from 'mobx';
 import axios from 'axios';
+import Platform from '@lib/platform.js';
 
 
 class MovieStore {
@@ -21,8 +22,16 @@ class MovieStore {
         });
     };
 
-    setSearchText = searchText => {
+    setSearchText = async searchText => {
         this.searchText = searchText;
+
+        if (this.searchText.length > 2) {
+            await this.makeSearch(this.searchText);
+        }
+
+        if (!this.searchText) {
+            this.results = [];
+        }
     };
 
     getSearchText = () => {
@@ -33,17 +42,12 @@ class MovieStore {
         this.currentFilm = currentFilm;
     };
 
-    makeSearch = () => {
-        if (!this.searchText) {
-            return;
-        }
-
-        const data = {
-            title: this.searchText,
+    makeSearch = async searchText => {
+        const params = {
+            title: searchText,
         };
 
-        const url = process.env.PLATFORM_URL;
-        axios.post(url, data).then(response => {
+        Platform.get('/search', { params }).then(response => {
             if ((response.status === 200) && !('error' in response.data)) {
                 this.results = response.data;
                 this.error = null;

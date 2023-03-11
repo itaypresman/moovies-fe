@@ -1,5 +1,6 @@
 import React from 'react';
-import MovieStore from '../../stores/MovieStore.js';
+import MovieStore from '@stores/MovieStore.js';
+import { observer } from 'mobx-react';
 
 
 function MainPage() {
@@ -12,4 +13,4 @@ function MainPage() {
 }
 
 
-export default MainPage;
+export default observer(MainPage);

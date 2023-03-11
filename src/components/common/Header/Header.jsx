@@ -1,15 +1,13 @@
-import React from "react";
-import "./Header.css";
+import React from 'react';
+import './Header.css';
+import SearchBox from '../SearchBox/SearchBox.jsx';
 
 
 function Header() {
     return (
         <header>
-            <div id="logo">OIMDB</div>
-            <div id="search-container">
-                <input type="text" id="search-input" placeholder="Search"/>
-                <div id="search-results"></div>
-            </div>
+            <div id='logo'>OIMDB</div>
+            <SearchBox/>
         </header>
     );
 }

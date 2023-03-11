@@ -1,17 +1,3 @@
-header {
-    display: flex;
-    align-items: center;
-    height: 50px;
-    background-color: #f2f2f2;
-    padding: 10px;
-}
-
-#logo { /* Добавлен новый стиль для логотипа */
-    font-size: 24px;
-    font-weight: bold;
-    margin-right: 20px; /* Добавлен margin-right для отступа между логотипом и поисковой строкой */
-}
-
 #search-container {
     display: flex;
     align-items: center;
@@ -33,7 +19,7 @@ input[type="text"] {
 }
 
 #search-results {
-    display: none;
+    /*display: none;*/
     position: absolute;
     top: 50px;
     left: 0;

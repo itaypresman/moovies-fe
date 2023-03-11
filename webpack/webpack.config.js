@@ -34,8 +34,16 @@ const base_conf = {
                     { loader: 'style-loader' },
                     { loader: 'css-loader' },
                 ]
-            }
-        ]
+            },
+        ],
+    },
+
+    resolve: {
+        alias: {
+            '@lib': path.resolve(__dirname, '..', 'lib'),
+            '@components': path.resolve(__dirname, '..', 'src', 'components'),
+            '@stores': path.resolve(__dirname, '..', 'src', 'stores'),
+        },
     },
 
     plugins: [
