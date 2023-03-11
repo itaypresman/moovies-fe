@@ -1,12 +1,24 @@
 import React from 'react';
 import './Header.css';
 import SearchBox from '../SearchBox/SearchBox.jsx';
+import { useNavigate } from 'react-router-dom';
+import MovieStore from '@stores/MovieStore.js';
 
 
 function Header() {
+    const navigate = useNavigate()
+
+    const onLogoClick = () => {
+        navigate('/');
+        MovieStore.setSearchText('');
+        MovieStore.setResults([]);
+        MovieStore.setCurrentFilmId(null);
+        MovieStore.setCurrentFilm(null);
+    };
+
     return (
         <header>
-            <div id='logo'>OIMDB</div>
+            <div id={ 'logo' } onClick={onLogoClick}>OIMDB</div>
             <SearchBox/>
         </header>
     );

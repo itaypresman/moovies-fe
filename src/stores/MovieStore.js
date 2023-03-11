@@ -19,6 +19,7 @@ class MovieStore {
 
             setSearchText: action,
             setResults: action,
+            setCurrentFilm: action,
             setCurrentFilmId: action,
             makeSearch: action,
             getFilm: action,
@@ -80,6 +81,10 @@ class MovieStore {
             }
         });
     };
+
+    setCurrentFilm = film => {
+        this.currentFilm = film;
+    }
 
     setCurrentFilmId = filmId => {
         this.currentFilmId = filmId;

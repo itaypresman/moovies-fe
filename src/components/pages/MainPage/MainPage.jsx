@@ -4,7 +4,7 @@ import './MainPage.css';
 
 function MainPage() {
     return (
-        <div className='content'>
+        <div className={ 'content' }>
             <h1>Start to search</h1>
         </div>
     );

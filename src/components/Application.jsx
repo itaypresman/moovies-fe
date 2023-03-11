@@ -11,7 +11,7 @@ function Application() {
         <React.Fragment>
             <Header/>
             <Routes>
-                <Route path={ '/' } exact={true} element={ <MainPage/> }/>
+                <Route path={ '/' } exact={ true } element={ <MainPage/> }/>
                 <Route path={ '/:filmId' } element={ <FilmInfo/> }/>
             </Routes>
         </React.Fragment>
