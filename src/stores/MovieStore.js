@@ -59,4 +59,4 @@ class MovieStore {
 }
 
 
-export default new SearchStore();
+export default new MovieStore();
