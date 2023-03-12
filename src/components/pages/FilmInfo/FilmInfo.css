@@ -6,7 +6,7 @@
     box-sizing: border-box;
     background-color: #222;
     color: #fff;
-    height: 100vh;
+    min-height: 100vh;
     font-family: Arial, sans-serif;
 }
 
